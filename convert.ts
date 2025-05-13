@@ -60,8 +60,11 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
         ${convertBlock(instr.children[0], context)}
       )`;
     }
-    case "if":
-    //TODO
+    case "if": {
+      return `local.get $${instr.args[0]}\n (if
+       (then \n ${convertBlock(instr.children[0], context)} \n) 
+       (else \n ${convertBlock(instr.children[0], context)} \n) \n)`;
+    }
     case "while":
     //TODO
     case "continue": //also a nop?? since you just keep going and fall through
