@@ -1,4 +1,4 @@
-import { BrilProgram } from "./types.d.ts";
+import type { BrilProgram } from "./types.d.ts";
 
 export async function pipeStringIntoCmdAndGetOutput(
     cmd: string,
@@ -9,13 +9,13 @@ export async function pipeStringIntoCmdAndGetOutput(
         const reader = stream.getReader();
         let result = "";
         const decoder = new TextDecoder();
-      
+
         while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          result += decoder.decode(value);
+            const { done, value } = await reader.read();
+            if (done) break;
+            result += decoder.decode(value);
         }
-      
+
         return result;
     }
 
@@ -35,7 +35,7 @@ export async function pipeStringIntoCmdAndGetOutput(
     const outputText = await streamToString(child.stdout);
     const errText = await streamToString(child.stderr);
 
-    return {stdout: outputText, stderr: errText};
+    return { stdout: outputText, stderr: errText };
 
 }
 

@@ -1,8 +1,8 @@
 //takes in BrilInstructions array and returns set of strings of locally used variables, call recursively on children
 
-import { BrilInstruction, Type } from "./types.d.ts";
+import type { BrilInstruction, Type } from "./types.d.ts";
 
-export function getLocals(brilInstructions : BrilInstruction[]) {
+export function getLocals(brilInstructions: BrilInstruction[]) {
   const localvars = new Map<string, Type>();
   return getLocalCall(brilInstructions, localvars)
 }
@@ -10,7 +10,7 @@ export function getLocals(brilInstructions : BrilInstruction[]) {
 
 function getLocalCall(brilInstructions: BrilInstruction[], localvars: Map<string, Type>): Map<string, Type> {
 
-  for (let i=0; i < brilInstructions.length; i++) {
+  for (let i = 0; i < brilInstructions.length; i++) {
     const instr = brilInstructions[i];
 
     if ("dest" in instr) {
@@ -21,7 +21,7 @@ function getLocalCall(brilInstructions: BrilInstruction[], localvars: Map<string
 
     if ("children" in instr) {
       const kids = instr.children;
-      for (let k = 0; k < kids.length; k++){
+      for (let k = 0; k < kids.length; k++) {
         getLocalCall(kids[k], localvars)
       }
     }

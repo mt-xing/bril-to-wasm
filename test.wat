@@ -1,9 +1,4 @@
-import type { BrilFunction, Type } from "./types.d.ts";
-import { getLocals } from "./localvars.ts";
-import { convertSingleInstruction } from "./convert.ts";
 
-export function wrapWithRuntime(txt: string): string {
-  return `
 (module
   ;; Import fd_write from WASI for console output
   (import "wasi_snapshot_preview1" "fd_write"
@@ -182,67 +177,21 @@ export function wrapWithRuntime(txt: string): string {
     drop
   )
   
-  ${txt}
-)`;
-}
-
-// TODO: handle arguments and function name and non-exporting function
-// export function writeFunction(txt: string, context: Map<string, Type>): string {
-//   return `
-//   (func (export "_start") ${Array.from(context).map(x => `(local $${x[0]} ${x[1] === "int" ? "i64" : "i32"})`).reduce((a, x) => a + x, '')}
-//     ${txt}
-//   )
-// `;
-// }
-
-export function writeFunction(func: BrilFunction): string {
-  let output: string = "(func "
-  if (func.name === "main") {
-    output += "(export \"_start\") "
-  } else {
-    output += `$${func.name}`
-  }
-
-  if (func.args != null) {
-    func.args.forEach((arg) => {
-      switch (arg.type) {
-        case "int":
-          output = output + `(param $${arg.name} i64) `
-          break
-        case "bool":
-          output = output + `(param $${arg.name} i32) `
-          break
-      }
-    })
-  }
-
-  if (func.type != null) {
-    switch (func.type) {
-      case "int":
-        output = output + "(return i64) "
-        break
-      case "bool":
-        output = output + "(return i32) "
-        break
-    }
-
-  }
-  let locals = getLocals(func.instrs)
-  locals.forEach((t, name) => {
-    switch (t) {
-      case "int":
-        output = output + `(local $${name} i64) `
-        break
-      case "bool":
-        output = output + `(local $${name} i32) `
-        break
-
-    }
-  })
-  // instructions
-  const translated = func.instrs.map(i => convertSingleInstruction(i, locals)).reduce((a, x) => a + x);
-
-  output = output + translated + " )"
-
-  return output
-}
+  (func (export "_start") (local $a i64) (local $b i64) (local $c i64) (local $cond i32) i64.const 2
+local.set $a
+i64.const -3
+local.set $b
+local.get $a
+local.get $b
+i64.add
+local.set $c
+local.get $c
+call $int_to_string_and_print
+call $print_newline
+i32.const 1
+local.set $cond
+local.get $cond
+call $bool_to_string_and_print
+call $print_newline
+ )
+)

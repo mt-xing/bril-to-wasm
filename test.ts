@@ -8,6 +8,5 @@ const program = await getProgramFromCmdLine();
 // Hard-code just a main function
 const instrs = program.functions[0].instrs;
 const context = getLocals(instrs);
-const translated = instrs.map(i => convertSingleInstruction(i, context)).reduce((a, x) => a + x);
-const programTxt = wrapWithRuntime(writeFunction(translated, context));
+const programTxt = wrapWithRuntime(writeFunction(program.functions[0]));
 console.log(programTxt);
