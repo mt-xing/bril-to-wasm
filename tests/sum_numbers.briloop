@@ -1,6 +1,7 @@
 @main {
   op1 : int = const 10;
-  i : int = const 0
+  i : int = const 0;
+  one: int = const 1;
   res : int = const 0;
   __v0: bool = le i op1;
 
