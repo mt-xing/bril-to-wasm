@@ -30,7 +30,7 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
       return `local.get $${instr.args[0]}\nlocal.get $${instr.args[1]}\ni64.${instr.op}\nlocal.set $${instr.dest}\n`;
     case "div":
       return `local.get $${instr.args[0]}\nlocal.get $${instr.args[1]}\ni64.div_s\nlocal.set $${instr.dest}\n`;
-    case "call":
+    case "call": {
       let ret = "";
       if (instr.args != null) { // push args onto stack
         ret += instr.args.map((arg) => `local.get $${arg}\n`).reduce((acc, it) => acc + it)
@@ -39,6 +39,7 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
         return ret + `call $${instr.funcs[0]!}\n local.set $${instr.dest}\n`
       }
       else return ret + `call $${instr.funcs[0]!}\n`
+    }
     case "not": //not a = a xor 1
       return `i32.const 1\n local.get $${instr.args![0]}\n i32.xor\nlocal.set $${instr.dest}\n`
     case "and": //also fallthrough with or
