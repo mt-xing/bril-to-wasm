@@ -56,7 +56,7 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
       return `local.get $${instr.args[0]}\nlocal.set $${instr.dest}\n`;
     case "ret":
       if (instr.args != null) { //load return value to top of stack
-        return `local.get $${instr.args[0]} \n return`
+        return `local.get $${instr.args[0]} \n return\n`
       }
       else return "return\n"
 
