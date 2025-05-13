@@ -2,13 +2,13 @@
 
 import { BrilInstruction, Type } from "./types.d.ts";
 
-export function getLocals(brilInstructions : BrilInstruction[]){
+export function getLocals(brilInstructions : BrilInstruction[]) {
   const localvars = new Map<string, Type>();
   return getLocalCall(brilInstructions, localvars)
 }
 
 
-function getLocalCall(brilInstructions : BrilInstruction[], localvars: Map<string, Type>) : Map<string, Type>{
+function getLocalCall(brilInstructions: BrilInstruction[], localvars: Map<string, Type>): Map<string, Type> {
 
   for (let i=0; i < brilInstructions.length; i++) {
     const instr = brilInstructions[i];
@@ -18,7 +18,7 @@ function getLocalCall(brilInstructions : BrilInstruction[], localvars: Map<strin
       const typy = instr.type;
       localvars.set(desty, typy);
     }
-    
+
     if ("children" in instr) {
       const kids = instr.children;
       for (let k = 0; k < kids.length; k++){
