@@ -63,7 +63,7 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
     case "if": {
       return `local.get $${instr.args[0]}\n (if
        (then \n ${convertBlock(instr.children[0], context)} \n) 
-       (else \n ${convertBlock(instr.children[0], context)} \n) \n)`;
+       (else \n ${convertBlock(instr.children[1], context)} \n) \n)`;
     }
     case "while":
     //TODO

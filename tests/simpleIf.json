@@ -25,12 +25,6 @@
           "type": "int"
         },
         {
-          "dest": "__v0",
-          "op": "const",
-          "type": "bool",
-          "value": true
-        },
-        {
           "args": [
             "v0",
             "v1"
@@ -68,6 +62,12 @@
             ]
           ],
           "op": "if"
+        },
+        {
+          "op": "print",
+          "args": [
+            "v3"
+          ]
         }
       ],
       "name": "main"
