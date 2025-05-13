@@ -1,0 +1,208 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "arrows",
+          "type": "int"
+        },
+        {
+          "name": "repeats",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "n",
+            "arrows",
+            "repeats"
+          ],
+          "dest": "ans",
+          "funcs": [
+            "up_arrow"
+          ],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "ans"
+          ],
+          "op": "print"
+        },
+        {
+          "op": "ret"
+        }
+      ],
+      "name": "main"
+    },
+    {
+      "args": [
+        {
+          "name": "num",
+          "type": "int"
+        },
+        {
+          "name": "arrows",
+          "type": "int"
+        },
+        {
+          "name": "repeats",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "num"
+          ],
+          "dest": "ans",
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "__v0",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "args": [
+            "__v0"
+          ],
+          "children": [
+            [
+              {
+                "args": [
+                  "i",
+                  "repeats"
+                ],
+                "dest": "keepgoing",
+                "op": "lt",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "keepgoing"
+                ],
+                "children": [
+                  [
+                    {
+                      "children": [
+                        [
+                          {
+                            "args": [
+                              "arrows",
+                              "one"
+                            ],
+                            "dest": "base_case",
+                            "op": "le",
+                            "type": "bool"
+                          },
+                          {
+                            "args": [
+                              "base_case"
+                            ],
+                            "children": [
+                              [
+                                {
+                                  "args": [
+                                    "ans",
+                                    "num"
+                                  ],
+                                  "dest": "ans",
+                                  "op": "mul",
+                                  "type": "int"
+                                },
+                                {
+                                  "op": "break",
+                                  "value": 0
+                                }
+                              ],
+                              [
+                                {
+                                  "args": [
+                                    "arrows",
+                                    "one"
+                                  ],
+                                  "dest": "new_arrows",
+                                  "op": "sub",
+                                  "type": "int"
+                                },
+                                {
+                                  "args": [
+                                    "num",
+                                    "new_arrows",
+                                    "ans"
+                                  ],
+                                  "dest": "ans",
+                                  "funcs": [
+                                    "up_arrow"
+                                  ],
+                                  "op": "call",
+                                  "type": "int"
+                                },
+                                {
+                                  "op": "break",
+                                  "value": 0
+                                }
+                              ]
+                            ],
+                            "op": "if"
+                          }
+                        ]
+                      ],
+                      "op": "block"
+                    },
+                    {
+                      "args": [
+                        "i",
+                        "one"
+                      ],
+                      "dest": "i",
+                      "op": "add",
+                      "type": "int"
+                    },
+                    {
+                      "op": "continue",
+                      "value": 0
+                    }
+                  ],
+                  [
+                    {
+                      "args": [
+                        "ans"
+                      ],
+                      "op": "ret"
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "while"
+        }
+      ],
+      "name": "up_arrow",
+      "type": "int"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "m",
+          "type": "int"
+        },
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "m",
+            "zero"
+          ],
+          "dest": "cond_m",
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond_m"
+          ],
+          "children": [
+            [
+              {
+                "args": [
+                  "n",
+                  "one"
+                ],
+                "dest": "tmp",
+                "op": "add",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "tmp"
+                ],
+                "op": "ret"
+              }
+            ],
+            [
+              {
+                "args": [
+                  "n",
+                  "zero"
+                ],
+                "dest": "cond_n",
+                "op": "eq",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "cond_n"
+                ],
+                "children": [
+                  [
+                    {
+                      "args": [
+                        "m",
+                        "one"
+                      ],
+                      "dest": "m1",
+                      "op": "sub",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "m1",
+                        "one"
+                      ],
+                      "dest": "tmp",
+                      "funcs": [
+                        "ack"
+                      ],
+                      "op": "call",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "tmp"
+                      ],
+                      "op": "ret"
+                    }
+                  ],
+                  [
+                    {
+                      "args": [
+                        "m",
+                        "one"
+                      ],
+                      "dest": "m1",
+                      "op": "sub",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "n",
+                        "one"
+                      ],
+                      "dest": "n1",
+                      "op": "sub",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "m",
+                        "n1"
+                      ],
+                      "dest": "t1",
+                      "funcs": [
+                        "ack"
+                      ],
+                      "op": "call",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "m1",
+                        "t1"
+                      ],
+                      "dest": "t2",
+                      "funcs": [
+                        "ack"
+                      ],
+                      "op": "call",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "t2"
+                      ],
+                      "op": "ret"
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "if"
+        }
+      ],
+      "name": "ack",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "m",
+          "type": "int"
+        },
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "m",
+            "n"
+          ],
+          "dest": "tmp",
+          "funcs": [
+            "ack"
+          ],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "tmp"
+          ],
+          "op": "print"
+        },
+        {
+          "op": "ret"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

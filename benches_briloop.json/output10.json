@@ -1,0 +1,153 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "x",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "dest": "__v0",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "args": [
+            "__v0"
+          ],
+          "children": [
+            [
+              {
+                "args": [
+                  "x"
+                ],
+                "op": "print"
+              },
+              {
+                "args": [
+                  "x",
+                  "one"
+                ],
+                "dest": "eq_one",
+                "op": "eq",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "eq_one"
+                ],
+                "children": [
+                  [
+                    {
+                      "op": "ret"
+                    }
+                  ],
+                  [
+                    {
+                      "args": [
+                        "x",
+                        "two"
+                      ],
+                      "dest": "half",
+                      "op": "div",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "half",
+                        "two"
+                      ],
+                      "dest": "doublehalf",
+                      "op": "mul",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "x",
+                        "doublehalf"
+                      ],
+                      "dest": "even",
+                      "op": "eq",
+                      "type": "bool"
+                    },
+                    {
+                      "args": [
+                        "even"
+                      ],
+                      "children": [
+                        [
+                          {
+                            "args": [
+                              "x",
+                              "two"
+                            ],
+                            "dest": "x",
+                            "op": "div",
+                            "type": "int"
+                          },
+                          {
+                            "op": "continue",
+                            "value": 0
+                          }
+                        ],
+                        [
+                          {
+                            "args": [
+                              "x",
+                              "three"
+                            ],
+                            "dest": "x",
+                            "op": "mul",
+                            "type": "int"
+                          },
+                          {
+                            "args": [
+                              "x",
+                              "one"
+                            ],
+                            "dest": "x",
+                            "op": "add",
+                            "type": "int"
+                          },
+                          {
+                            "op": "continue",
+                            "value": 0
+                          }
+                        ]
+                      ],
+                      "op": "if"
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "while"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}
