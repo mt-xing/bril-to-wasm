@@ -39,13 +39,18 @@ export type ControlInstruction = ({
   args?: [] | [string];
 } | {
   op: "block"
-  // TODO
+  children: [BrilInstruction[]];
 } | {
   op: "while"
-  // TODO
+  args: [string];
+  children: [BrilInstruction[]];
 } | {
   op: "if"
-  // TODO
+  args: [string];
+  children: [BrilInstruction[], BrilInstruction[]];
+} | {
+  op: "continue" | "break";
+  value: number;
 };
 
 export type MiscInstructions = {
