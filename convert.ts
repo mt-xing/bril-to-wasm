@@ -47,9 +47,9 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
 
     case "block": //block is a bookkeeping instruction; acts the same as nop
       return "nop\n";
-    case "while":
-    //TODO
     case "if":
+    //TODO
+    case "while":
     //TODO
     case "continue": //also a nop?? since you just keep going and fall through
       return "nop\n";
