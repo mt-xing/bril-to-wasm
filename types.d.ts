@@ -34,10 +34,19 @@ export type ControlInstruction = ({
 } & ({} | {
   dest: string;
   type: Type;
-})) | ({
+})) | {
   op: "ret";
   args?: [] | [string];
-});
+} | {
+  op: "block"
+  // TODO
+} | {
+  op: "while"
+  // TODO
+} | {
+  op: "if"
+  // TODO
+};
 
 export type MiscInstructions = {
   op: "id";
