@@ -3,15 +3,15 @@
 import { BrilInstruction } from "./types";
 import { Type } from "./types";
 
-export function getLocals(brilInstructions : BrilInstruction[]){
-  let localvars = new Map<string, Type>();
-  getLocalCall(brilInstructions, localvars)
+export function getLocals(brilInstructions: BrilInstruction[]): Map<string, Type> {
+  let localvars = getLocalCall(brilInstructions, new Map<string, Type>())
+  return localvars
 }
 
 
-function getLocalCall(brilInstructions : BrilInstruction[], localvars: Map<string, Type>) : Map<string, Type>{
+function getLocalCall(brilInstructions: BrilInstruction[], localvars: Map<string, Type>): Map<string, Type> {
 
-  for (let i=0; i < brilInstructions.length; i++) {
+  for (let i = 0; i < brilInstructions.length; i++) {
     let instr = brilInstructions[i];
 
     if ("dest" in instr) {
@@ -19,10 +19,10 @@ function getLocalCall(brilInstructions : BrilInstruction[], localvars: Map<strin
       let typy = instr.type;
       localvars.set(desty, typy);
     }
-    
+
     if ("children" in instr) {
       let kids = instr.children;
-      for (let k = 0; k < kids.length; k++){
+      for (let k = 0; k < kids.length; k++) {
         getLocalCall(kids[k], localvars)
       }
     }
