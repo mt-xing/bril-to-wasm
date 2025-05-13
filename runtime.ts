@@ -1,8 +1,8 @@
-import type { BrilFunction, Type } from "./types.d.ts";
+import type { BrilFunction, BrilProgram, Type } from "./types.d.ts";
 import { getLocals } from "./localvars.ts";
 import { convertSingleInstruction } from "./convert.ts";
 
-export function wrapWithRuntime(txt: string): string {
+function wrapWithRuntime(txt: string): string {
   return `
 (module
   ;; Import fd_write from WASI for console output
@@ -186,16 +186,7 @@ export function wrapWithRuntime(txt: string): string {
 )`;
 }
 
-// TODO: handle arguments and function name and non-exporting function
-// export function writeFunction(txt: string, context: Map<string, Type>): string {
-//   return `
-//   (func (export "_start") ${Array.from(context).map(x => `(local $${x[0]} ${x[1] === "int" ? "i64" : "i32"})`).reduce((a, x) => a + x, '')}
-//     ${txt}
-//   )
-// `;
-// }
-
-export function writeFunction(func: BrilFunction): string {
+function writeFunction(func: BrilFunction): string {
   let output: string = "(func "
   if (func.name === "main") {
     output += "(export \"_start\") "
@@ -245,4 +236,8 @@ export function writeFunction(func: BrilFunction): string {
   output = output + translated + " )"
 
   return output
+}
+
+export function translateProgram(prog: BrilProgram): string {
+  return wrapWithRuntime(prog.functions.map((fn) => writeFunction(fn)).reduce((acc, fnstr) => acc + fnstr))
 }
