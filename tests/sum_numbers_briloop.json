@@ -1,13 +1,13 @@
 {
   "functions": [
     {
-      "instrs": [
+      "args": [
         {
-          "dest": "op1",
-          "op": "const",
-          "type": "int",
-          "value": 10
-        },
+          "name": "op1",
+          "type": "int"
+        }
+      ],
+      "instrs": [
         {
           "dest": "i",
           "op": "const",

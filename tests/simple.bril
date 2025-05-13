@@ -1,4 +1,4 @@
-@main {
+@main (a : int) {
   a: int = const 2;
   b: int = const -3;
   c: int = add a b;
