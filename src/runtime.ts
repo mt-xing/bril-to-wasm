@@ -193,7 +193,7 @@ function writeFunction(func: BrilFunction): string {
   if (func.name === "main") {
     output += "(export \"_start\") "
   } else {
-    output += `$${func.name}`
+    output += `$${func.name} `
   }
 
   if (func.args != null) {
