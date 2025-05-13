@@ -1,0 +1,157 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "x1",
+          "type": "int"
+        },
+        {
+          "name": "y1",
+          "type": "int"
+        },
+        {
+          "name": "x2",
+          "type": "int"
+        },
+        {
+          "name": "y2",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "children": [
+            [
+              {
+                "args": [
+                  "x1",
+                  "y1"
+                ],
+                "dest": "a1",
+                "funcs": [
+                  "area"
+                ],
+                "op": "call",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "x2",
+                  "y2"
+                ],
+                "dest": "a2",
+                "funcs": [
+                  "area"
+                ],
+                "op": "call",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "a1",
+                  "a2"
+                ],
+                "dest": "res",
+                "op": "sub",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "a1",
+                  "a2"
+                ],
+                "dest": "a1_bigger",
+                "op": "gt",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "a1_bigger"
+                ],
+                "children": [
+                  [
+                    {
+                      "op": "break",
+                      "value": 0
+                    }
+                  ],
+                  [
+                    {
+                      "dest": "neg1",
+                      "op": "const",
+                      "type": "int",
+                      "value": -1
+                    },
+                    {
+                      "args": [
+                        "res",
+                        "neg1"
+                      ],
+                      "dest": "res",
+                      "op": "mul",
+                      "type": "int"
+                    },
+                    {
+                      "op": "break",
+                      "value": 0
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "block"
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "op": "print"
+        },
+        {
+          "op": "ret"
+        }
+      ],
+      "name": "main"
+    },
+    {
+      "args": [
+        {
+          "name": "x",
+          "type": "int"
+        },
+        {
+          "name": "y",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "x",
+            "y"
+          ],
+          "dest": "area",
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "area"
+          ],
+          "op": "print"
+        },
+        {
+          "args": [
+            "area"
+          ],
+          "op": "ret"
+        }
+      ],
+      "name": "area",
+      "type": "int"
+    }
+  ]
+}

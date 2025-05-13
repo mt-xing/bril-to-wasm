@@ -1,0 +1,216 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "input"
+          ],
+          "dest": "catn",
+          "funcs": [
+            "catalan"
+          ],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "catn"
+          ],
+          "op": "print"
+        },
+        {
+          "op": "ret"
+        }
+      ],
+      "name": "main"
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "n",
+            "zero"
+          ],
+          "dest": "guard0",
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "guard0"
+          ],
+          "children": [
+            [
+              {
+                "args": [
+                  "one"
+                ],
+                "op": "ret"
+              }
+            ],
+            [
+              {
+                "args": [
+                  "zero"
+                ],
+                "dest": "sum",
+                "op": "id",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "zero"
+                ],
+                "dest": "idx",
+                "op": "id",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "n",
+                  "one"
+                ],
+                "dest": "n",
+                "op": "sub",
+                "type": "int"
+              },
+              {
+                "dest": "__v0",
+                "op": "const",
+                "type": "bool",
+                "value": true
+              },
+              {
+                "args": [
+                  "__v0"
+                ],
+                "children": [
+                  [
+                    {
+                      "args": [
+                        "idx",
+                        "n"
+                      ],
+                      "dest": "guard1",
+                      "op": "le",
+                      "type": "bool"
+                    },
+                    {
+                      "args": [
+                        "guard1"
+                      ],
+                      "children": [
+                        [
+                          {
+                            "args": [
+                              "n",
+                              "idx"
+                            ],
+                            "dest": "n2",
+                            "op": "sub",
+                            "type": "int"
+                          },
+                          {
+                            "args": [
+                              "idx"
+                            ],
+                            "dest": "v1",
+                            "funcs": [
+                              "catalan"
+                            ],
+                            "op": "call",
+                            "type": "int"
+                          },
+                          {
+                            "args": [
+                              "n2"
+                            ],
+                            "dest": "v2",
+                            "funcs": [
+                              "catalan"
+                            ],
+                            "op": "call",
+                            "type": "int"
+                          },
+                          {
+                            "args": [
+                              "v1",
+                              "v2"
+                            ],
+                            "dest": "elti",
+                            "op": "mul",
+                            "type": "int"
+                          },
+                          {
+                            "args": [
+                              "sum",
+                              "elti"
+                            ],
+                            "dest": "sum",
+                            "op": "add",
+                            "type": "int"
+                          },
+                          {
+                            "args": [
+                              "idx",
+                              "one"
+                            ],
+                            "dest": "idx",
+                            "op": "add",
+                            "type": "int"
+                          },
+                          {
+                            "op": "continue",
+                            "value": 0
+                          }
+                        ],
+                        [
+                          {
+                            "args": [
+                              "sum"
+                            ],
+                            "op": "ret"
+                          }
+                        ]
+                      ],
+                      "op": "if"
+                    }
+                  ]
+                ],
+                "op": "while"
+              }
+            ]
+          ],
+          "op": "if"
+        }
+      ],
+      "name": "catalan",
+      "type": "int"
+    }
+  ]
+}

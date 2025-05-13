@@ -1,0 +1,153 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "num",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zer",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "fac",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "__v0",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "args": [
+            "__v0"
+          ],
+          "children": [
+            [
+              {
+                "args": [
+                  "one",
+                  "num"
+                ],
+                "dest": "ispos",
+                "op": "lt",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "ispos"
+                ],
+                "children": [
+                  [
+                    {
+                      "args": [
+                        "num",
+                        "fac"
+                      ],
+                      "dest": "quo",
+                      "op": "div",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "quo",
+                        "fac"
+                      ],
+                      "dest": "tmp",
+                      "op": "mul",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "num",
+                        "tmp"
+                      ],
+                      "dest": "mod",
+                      "op": "sub",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "mod",
+                        "zer"
+                      ],
+                      "dest": "iszero",
+                      "op": "eq",
+                      "type": "bool"
+                    },
+                    {
+                      "args": [
+                        "iszero"
+                      ],
+                      "children": [
+                        [
+                          {
+                            "args": [
+                              "fac"
+                            ],
+                            "op": "print"
+                          },
+                          {
+                            "args": [
+                              "num",
+                              "fac"
+                            ],
+                            "dest": "num",
+                            "op": "div",
+                            "type": "int"
+                          },
+                          {
+                            "op": "continue",
+                            "value": 0
+                          }
+                        ],
+                        [
+                          {
+                            "args": [
+                              "fac",
+                              "one"
+                            ],
+                            "dest": "fac",
+                            "op": "add",
+                            "type": "int"
+                          },
+                          {
+                            "op": "continue",
+                            "value": 0
+                          }
+                        ]
+                      ],
+                      "op": "if"
+                    }
+                  ],
+                  [
+                    {
+                      "op": "ret"
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "while"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

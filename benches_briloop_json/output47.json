@@ -1,0 +1,308 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "children": [
+            [
+              {
+                "dest": "i",
+                "op": "const",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "dest": "res",
+                "op": "const",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "dest": "one",
+                "op": "const",
+                "type": "int",
+                "value": 1
+              },
+              {
+                "dest": "non",
+                "op": "const",
+                "type": "int",
+                "value": -1
+              },
+              {
+                "dest": "zer",
+                "op": "const",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "args": [
+                  "n",
+                  "zer"
+                ],
+                "dest": "nlz",
+                "op": "lt",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "nlz"
+                ],
+                "children": [
+                  [
+                    {
+                      "args": [
+                        "n",
+                        "non"
+                      ],
+                      "dest": "n",
+                      "op": "mul",
+                      "type": "int"
+                    },
+                    {
+                      "op": "break",
+                      "value": 0
+                    }
+                  ],
+                  [
+                    {
+                      "op": "break",
+                      "value": 0
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "block"
+        },
+        {
+          "dest": "__v2",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "args": [
+            "__v2"
+          ],
+          "children": [
+            [
+              {
+                "args": [
+                  "i",
+                  "one"
+                ],
+                "dest": "i",
+                "op": "add",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "i",
+                  "i"
+                ],
+                "dest": "isq",
+                "op": "mul",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "isq",
+                  "n"
+                ],
+                "dest": "sqgt",
+                "op": "gt",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "sqgt"
+                ],
+                "children": [
+                  [
+                    {
+                      "args": [
+                        "res"
+                      ],
+                      "op": "print"
+                    },
+                    {
+                      "op": "ret"
+                    }
+                  ],
+                  [
+                    {
+                      "args": [
+                        "n",
+                        "i"
+                      ],
+                      "dest": "m",
+                      "funcs": [
+                        "mod"
+                      ],
+                      "op": "call",
+                      "type": "int"
+                    },
+                    {
+                      "args": [
+                        "m",
+                        "zer"
+                      ],
+                      "dest": "eqz",
+                      "op": "eq",
+                      "type": "bool"
+                    },
+                    {
+                      "args": [
+                        "eqz"
+                      ],
+                      "children": [
+                        [
+                          {
+                            "args": [
+                              "i"
+                            ],
+                            "op": "print"
+                          },
+                          {
+                            "args": [
+                              "res",
+                              "i"
+                            ],
+                            "dest": "res",
+                            "op": "add",
+                            "type": "int"
+                          },
+                          {
+                            "args": [
+                              "n",
+                              "i"
+                            ],
+                            "dest": "d",
+                            "op": "div",
+                            "type": "int"
+                          },
+                          {
+                            "args": [
+                              "d",
+                              "i"
+                            ],
+                            "dest": "deqi",
+                            "op": "eq",
+                            "type": "bool"
+                          },
+                          {
+                            "args": [
+                              "deqi"
+                            ],
+                            "children": [
+                              [
+                                {
+                                  "op": "continue",
+                                  "value": 0
+                                }
+                              ],
+                              [
+                                {
+                                  "args": [
+                                    "d"
+                                  ],
+                                  "op": "print"
+                                },
+                                {
+                                  "args": [
+                                    "res",
+                                    "d"
+                                  ],
+                                  "dest": "res",
+                                  "op": "add",
+                                  "type": "int"
+                                },
+                                {
+                                  "op": "continue",
+                                  "value": 0
+                                }
+                              ]
+                            ],
+                            "op": "if"
+                          }
+                        ],
+                        [
+                          {
+                            "op": "continue",
+                            "value": 0
+                          }
+                        ]
+                      ],
+                      "op": "if"
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "while"
+        }
+      ],
+      "name": "main"
+    },
+    {
+      "args": [
+        {
+          "name": "dividend",
+          "type": "int"
+        },
+        {
+          "name": "divisor",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "dividend",
+            "divisor"
+          ],
+          "dest": "quot",
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "divisor",
+            "quot"
+          ],
+          "dest": "prod",
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "dividend",
+            "prod"
+          ],
+          "dest": "diff",
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "diff"
+          ],
+          "op": "ret"
+        }
+      ],
+      "name": "mod",
+      "type": "int"
+    }
+  ]
+}

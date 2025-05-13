@@ -1,0 +1,233 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "x",
+          "type": "int"
+        },
+        {
+          "name": "y",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "children": [
+            [
+              {
+                "args": [
+                  "y"
+                ],
+                "dest": "greater",
+                "op": "id",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "x",
+                  "y"
+                ],
+                "dest": "v4",
+                "op": "gt",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "v4"
+                ],
+                "children": [
+                  [
+                    {
+                      "args": [
+                        "x"
+                      ],
+                      "dest": "greater",
+                      "op": "id",
+                      "type": "int"
+                    },
+                    {
+                      "op": "break",
+                      "value": 0
+                    }
+                  ],
+                  [
+                    {
+                      "op": "break",
+                      "value": 0
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "block"
+        },
+        {
+          "dest": "__v2",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "args": [
+            "__v2"
+          ],
+          "children": [
+            [
+              {
+                "args": [
+                  "greater",
+                  "x"
+                ],
+                "dest": "modX",
+                "funcs": [
+                  "getMod"
+                ],
+                "op": "call",
+                "type": "int"
+              },
+              {
+                "args": [
+                  "greater",
+                  "y"
+                ],
+                "dest": "modY",
+                "funcs": [
+                  "getMod"
+                ],
+                "op": "call",
+                "type": "int"
+              },
+              {
+                "dest": "zero",
+                "op": "const",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "args": [
+                  "modX",
+                  "zero"
+                ],
+                "dest": "xZero",
+                "op": "eq",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "modY",
+                  "zero"
+                ],
+                "dest": "yZero",
+                "op": "eq",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "xZero",
+                  "yZero"
+                ],
+                "dest": "bothZero",
+                "op": "and",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "bothZero"
+                ],
+                "children": [
+                  [
+                    {
+                      "args": [
+                        "greater"
+                      ],
+                      "op": "print"
+                    },
+                    {
+                      "op": "ret"
+                    }
+                  ],
+                  [
+                    {
+                      "dest": "one",
+                      "op": "const",
+                      "type": "int",
+                      "value": 1
+                    },
+                    {
+                      "args": [
+                        "greater",
+                        "one"
+                      ],
+                      "dest": "greater",
+                      "op": "add",
+                      "type": "int"
+                    },
+                    {
+                      "op": "continue",
+                      "value": 0
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "while"
+        }
+      ],
+      "name": "main"
+    },
+    {
+      "args": [
+        {
+          "name": "val",
+          "type": "int"
+        },
+        {
+          "name": "mod",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "val",
+            "mod"
+          ],
+          "dest": "divisor",
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "divisor",
+            "mod"
+          ],
+          "dest": "multiple",
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "val",
+            "multiple"
+          ],
+          "dest": "rem",
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "rem"
+          ],
+          "op": "ret"
+        }
+      ],
+      "name": "getMod",
+      "type": "int"
+    }
+  ]
+}

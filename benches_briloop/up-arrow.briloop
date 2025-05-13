@@ -1,0 +1,35 @@
+@main(n: int, arrows: int, repeats: int) {
+  ans: int = call @up_arrow n arrows repeats;
+  print ans;
+  ret;
+}
+@up_arrow(num: int, arrows: int, repeats: int): int {
+  one: int = const 1;
+  ans: int = id num;
+  i: int = const 1;
+  __v0: bool = const true;
+  while __v0 {
+    keepgoing: bool = lt i repeats;
+    if keepgoing
+    then {
+      block {
+        base_case: bool = le arrows one;
+        if base_case
+        then {
+          ans: int = mul ans num;
+          break 0;
+        }
+        else {
+          new_arrows: int = sub arrows one;
+          ans: int = call @up_arrow num new_arrows ans;
+          break 0;
+        }
+      }
+      i: int = add i one;
+      continue 0;
+    }
+    else {
+      ret ans;
+    }
+  }
+}

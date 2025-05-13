@@ -1,0 +1,39 @@
+@main(x: int, y: int) {
+  block {
+    greater: int = id y;
+    v4: bool = gt x y;
+    if v4
+    then {
+      greater: int = id x;
+      break 0;
+    }
+    else {
+      break 0;
+    }
+  }
+  __v2: bool = const true;
+  while __v2 {
+    modX: int = call @getMod greater x;
+    modY: int = call @getMod greater y;
+    zero: int = const 0;
+    xZero: bool = eq modX zero;
+    yZero: bool = eq modY zero;
+    bothZero: bool = and xZero yZero;
+    if bothZero
+    then {
+      print greater;
+      ret;
+    }
+    else {
+      one: int = const 1;
+      greater: int = add greater one;
+      continue 0;
+    }
+  }
+}
+@getMod(val: int, mod: int): int {
+  divisor: int = div val mod;
+  multiple: int = mul divisor mod;
+  rem: int = sub val multiple;
+  ret rem;
+}
