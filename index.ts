@@ -1,5 +1,5 @@
-import { getProgramFromCmdLine } from "./io.ts";
-import { translateProgram } from "./runtime.ts";
+import { getProgramFromCmdLine } from "./src/io.ts";
+import { translateProgram } from "./src/runtime.ts";
 
 const program = await getProgramFromCmdLine();
 
