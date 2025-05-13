@@ -13,7 +13,6 @@ function getLoopSuffix(index: number, nestedLoops: string[]) {
 }
 
 export function convertSingleInstruction(instr: BrilInstruction, context: Map<string, Type>, nestedLoops: string[]): string {
-  // TODO add types
   switch (instr.op) {
     case "nop":
       return "nop\n";
@@ -31,6 +30,7 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
     case "sub":
       return `local.get $${instr.args[0]}\nlocal.get $${instr.args[1]}\ni64.${instr.op}\nlocal.set $${instr.dest}\n`;
     case "eq":
+      return `local.get $${instr.args[0]}\nlocal.get $${instr.args[1]}\ni64.${instr.op}\nlocal.set $${instr.dest}\n`;
     case "le":
     case "ge":
     case "lt":
