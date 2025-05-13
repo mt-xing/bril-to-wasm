@@ -31,6 +31,12 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
         return `call $${instr.funcs[0]!}\n local.set $${instr.dest}\n`
       }
       else return `call $${instr.funcs[0]!}\n`
+    case "not": //not a = a xor 1
+      return `i32.const 1\n local.set $${instr.args![0]}\n i32.xor\nlocal.set $${instr.dest}\n`
+    case "and":
+    case "or":
+      return `local.get $${instr.args[0]}\nlocal.get $${instr.args[1]}\ni32.${instr.op}\nlocal.set $${instr.dest}\n`;
+
 
     default:
       return '';
