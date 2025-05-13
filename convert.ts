@@ -15,7 +15,7 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
       throw new Error();
     case "print":
       return instr.args.map((a) => translatePrint(a, context)).reduce((a, x) => a + x);
-    case "add":
+    case "add": // fall through since they all do the same thing
     case "mul":
     case "sub":
     case "eq":
@@ -33,9 +33,28 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
       else return `call $${instr.funcs[0]!}\n`
     case "not": //not a = a xor 1
       return `i32.const 1\n local.set $${instr.args![0]}\n i32.xor\nlocal.set $${instr.dest}\n`
-    case "and":
+    case "and": //also fallthrough with or
     case "or":
       return `local.get $${instr.args[0]}\nlocal.get $${instr.args[1]}\ni32.${instr.op}\nlocal.set $${instr.dest}\n`;
+    case "id":
+      return `local.get $${instr.args[0]}\nlocal.set $${instr.dest}\n`;
+    case "ret":
+      if (instr.args != null) { //load return value to top of stack
+        return `local.get $${instr.args[0]} \n return`
+      }
+      else return "return\n"
+
+
+    case "block": //block is a bookkeeping instruction; acts the same as nop
+      return "nop\n";
+    case "while":
+    //TODO
+    case "if":
+    //TODO
+    case "continue": //also a nop?? since you just keep going and fall through
+      return "nop\n";
+    case "break": //return to [level]'s while instruction
+    //TODO
 
 
     default:
