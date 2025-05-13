@@ -233,7 +233,7 @@ function writeFunction(func: BrilFunction): string {
     }
   })
   // instructions
-  const translated = convertBlock(func.instrs, locals);
+  const translated = convertBlock(func.instrs, locals, []);
 
   output = output + "\n" + translated + " )"
 
