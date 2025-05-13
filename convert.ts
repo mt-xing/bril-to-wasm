@@ -68,8 +68,9 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
       )\n`;
     }
     case "if":
-      //TODO
-      return 'nop\n';
+      return `local.get $${instr.args[0]}\n (if
+       (then \n ${convertBlock(instr.children[0], context, nestedLoops)} \n) 
+       (else \n ${convertBlock(instr.children[0], context, nestedLoops)} \n) \n)\n`;
     case "while": {
       const suffix = freshName("loop");
       nestedLoops.push(suffix);
