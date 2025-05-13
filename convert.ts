@@ -1,5 +1,9 @@
 import type { BrilInstruction, Type } from "./types.d.ts";
-import { assertUnreachable } from "./utils.ts";
+import { assertUnreachable, freshName } from "./utils.ts";
+
+export function convertBlock(block: BrilInstruction[], context: Map<string, Type>): string {
+  return block.map(i => convertSingleInstruction(i, context)).reduce((a, x) => a + x);
+}
 
 export function convertSingleInstruction(instr: BrilInstruction, context: Map<string, Type>): string {
   // TODO add types
@@ -45,8 +49,12 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
       else return "return\n"
 
 
-    case "block": //block is a bookkeeping instruction; acts the same as nop
-      return "nop\n";
+    case "block": {
+      const blockName = freshName("block");
+      return `(block $${blockName}
+        ${convertBlock(instr.children[0], context)}
+      )`;
+    }
     case "if":
     //TODO
     case "while":
