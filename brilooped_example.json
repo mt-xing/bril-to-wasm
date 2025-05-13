@@ -1,0 +1,118 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "r",
+          "funcs": [
+            "fib_iter"
+          ],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "r"
+          ],
+          "op": "print"
+        }
+      ],
+      "name": "main"
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "a",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "b",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "n",
+            "zero"
+          ],
+          "dest": "cond",
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "children": [
+            {
+              "args": [
+                "a",
+                "b"
+              ],
+              "dest": "temp",
+              "op": "add",
+              "type": "int"
+            },
+            {
+              "dest": "a",
+              "op": "b",
+              "type": "int"
+            },
+            {
+              "dest": "b",
+              "op": "temp",
+              "type": "int"
+            },
+            {
+              "args": [
+                "n",
+                "one"
+              ],
+              "dest": "n",
+              "op": "sub",
+              "type": "int"
+            }
+          ],
+          "op": "while"
+        },
+        {
+          "args": [
+            "a"
+          ],
+          "op": "ret"
+        }
+      ],
+      "name": "fib_iter"
+    }
+  ]
+}
