@@ -1,4 +1,4 @@
-export type Type = "int" | "bool";
+export type Type = "int" | "bool"; // TODO add floats
 
 export type ArithmeticInstruction = {
   op: "add" | "mul" | "sub" | "div";
@@ -8,7 +8,7 @@ export type ArithmeticInstruction = {
 };
 
 export type ComparisonInstruction = {
-  op: "eq" | "lt" | "gt" | "le" | "get";
+  op: "eq" | "lt" | "gt" | "le" | "ge"; // i think there was a typo here, said get not ge
   dest: string;
   type: "bool";
   args: [string, string];
@@ -81,11 +81,11 @@ export type BrilInstruction =
   | BinaryLogicInstruction
   | ControlInstruction
   | MiscInstructions
-;
+  ;
 
 export type BrilFunction = {
   name: string;
-  args?: {name: string; type: Type}[];
+  args?: { name: string; type: Type }[];
   type?: Type;
   instrs: BrilInstruction[];
 };
