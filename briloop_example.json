@@ -1,0 +1,177 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "op1",
+          "type": "int"
+        },
+        {
+          "name": "op2",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "vc0",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "op1"
+          ],
+          "dest": "v0",
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "op2"
+          ],
+          "dest": "v1",
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "__v0",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "args": [
+            "__v0"
+          ],
+          "children": [
+            [
+              {
+                "children": [
+                  [
+                    {
+                      "args": [
+                        "v0",
+                        "v1"
+                      ],
+                      "dest": "v2",
+                      "op": "lt",
+                      "type": "bool"
+                    },
+                    {
+                      "args": [
+                        "v2"
+                      ],
+                      "children": [
+                        [
+                          {
+                            "args": [
+                              "v1",
+                              "v0"
+                            ],
+                            "dest": "v3",
+                            "op": "sub",
+                            "type": "int"
+                          },
+                          {
+                            "op": "break",
+                            "value": 0
+                          }
+                        ],
+                        [
+                          {
+                            "args": [
+                              "v0",
+                              "v1"
+                            ],
+                            "dest": "v3",
+                            "op": "sub",
+                            "type": "int"
+                          },
+                          {
+                            "op": "break",
+                            "value": 0
+                          }
+                        ]
+                      ],
+                      "op": "if"
+                    }
+                  ]
+                ],
+                "op": "block"
+              },
+              {
+                "args": [
+                  "v3",
+                  "vc0"
+                ],
+                "dest": "v4",
+                "op": "eq",
+                "type": "bool"
+              },
+              {
+                "args": [
+                  "v4"
+                ],
+                "children": [
+                  [
+                    {
+                      "args": [
+                        "v1"
+                      ],
+                      "op": "print"
+                    },
+                    {
+                      "op": "ret"
+                    }
+                  ],
+                  [
+                    {
+                      "args": [
+                        "v2"
+                      ],
+                      "children": [
+                        [
+                          {
+                            "args": [
+                              "v3"
+                            ],
+                            "dest": "v1",
+                            "op": "id",
+                            "type": "int"
+                          },
+                          {
+                            "op": "continue",
+                            "value": 0
+                          }
+                        ],
+                        [
+                          {
+                            "args": [
+                              "v3"
+                            ],
+                            "dest": "v0",
+                            "op": "id",
+                            "type": "int"
+                          },
+                          {
+                            "op": "continue",
+                            "value": 0
+                          }
+                        ]
+                      ],
+                      "op": "if"
+                    }
+                  ]
+                ],
+                "op": "if"
+              }
+            ]
+          ],
+          "op": "while"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}
