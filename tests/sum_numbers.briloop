@@ -1,0 +1,13 @@
+@main {
+  op1 : int = const 10;
+  i : int = const 0
+  res : int = const 0;
+  __v0: bool = le i op1;
+
+  while __v0 {
+    res : int = add res i;
+    i : int = add i 1;
+    __v0 : bool = le i op1;
+  }
+  print res;
+}
