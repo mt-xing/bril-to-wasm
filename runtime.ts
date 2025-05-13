@@ -212,10 +212,10 @@ function writeFunction(func: BrilFunction): string {
   if (func.type != null) {
     switch (func.type) {
       case "int":
-        output = output + "(return i64) "
+        output = output + "(result i64) "
         break
       case "bool":
-        output = output + "(return i32) "
+        output = output + "(result i32) "
         break
     }
 
@@ -235,7 +235,7 @@ function writeFunction(func: BrilFunction): string {
   // instructions
   const translated = convertBlock(func.instrs, locals);
 
-  output = output + translated + " )"
+  output = output + "\n" + translated + " )"
 
   return output
 }
