@@ -177,21 +177,30 @@
     drop
   )
   
-  (func (export "_start") (local $a i64) (local $b i64) (local $c i64) (local $cond i32) i64.const 2
+  (func (export "_start") (local $a i64) (local $b i64) (local $aInc i64) 
+i64.const 2
 local.set $a
 i64.const -3
 local.set $b
 local.get $a
-local.get $b
-i64.add
-local.set $c
-local.get $c
+call $addOne
+ local.set $aInc
+local.get $aInc
 call $int_to_string_and_print
 call $print_newline
-i32.const 1
-local.set $cond
-local.get $cond
-call $bool_to_string_and_print
+local.get $b
+call $addOne
+ local.set $b
+local.get $b
+call $int_to_string_and_print
 call $print_newline
- )
+ )(func $addOne(param $n i64) (result i64) (local $one i64) (local $inc i64) 
+i64.const 1
+local.set $one
+local.get $n
+local.get $one
+i64.add
+local.set $inc
+local.get $inc 
+ return )
 )

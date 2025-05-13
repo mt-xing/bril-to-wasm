@@ -210,10 +210,10 @@ function writeFunction(func: BrilFunction): string {
   if (func.type != null) {
     switch (func.type) {
       case "int":
-        output = output + "(return i64) "
+        output = output + "(result i64) "
         break
       case "bool":
-        output = output + "(return i32) "
+        output = output + "(result i32) "
         break
     }
 
@@ -233,7 +233,7 @@ function writeFunction(func: BrilFunction): string {
   // instructions
   const translated = func.instrs.map(i => convertSingleInstruction(i, locals)).reduce((a, x) => a + x);
 
-  output = output + translated + " )"
+  output = output + "\n" + translated + " )"
 
   return output
 }

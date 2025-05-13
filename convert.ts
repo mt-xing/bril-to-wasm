@@ -27,10 +27,14 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
     case "div":
       return `local.get $${instr.args[0]}\nlocal.get $${instr.args[1]}\ni64.div_s\nlocal.set $${instr.dest}\n`;
     case "call":
-      if (instr.dest != null) {
-        return `call $${instr.funcs[0]!}\n local.set $${instr.dest}\n`
+      let ret = "";
+      if (instr.args != null) { // push args onto stack
+        ret += instr.args.map((arg) => `local.get $${arg}\n`).reduce((acc, it) => acc + it)
       }
-      else return `call $${instr.funcs[0]!}\n`
+      if (instr.dest != null) {
+        return ret + `call $${instr.funcs[0]!}\n local.set $${instr.dest}\n`
+      }
+      else return ret + `call $${instr.funcs[0]!}\n`
     case "not": //not a = a xor 1
       return `i32.const 1\n local.get $${instr.args![0]}\n i32.xor\nlocal.set $${instr.dest}\n`
     case "and": //also fallthrough with or

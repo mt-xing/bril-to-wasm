@@ -31,6 +31,7 @@ export type BinaryLogicInstruction = {
 export type ControlInstruction = ({
   op: "call";
   funcs: [string];
+  args?: [string];
 } & (Record<string, never> | {
   dest: string;
   type: Type;
