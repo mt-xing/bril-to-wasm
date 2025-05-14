@@ -1,20 +1,20 @@
-//takes in BrilInstructions array and returns set of strings of locally used variables, call recursively on children
+// takes in BrilInstructions array and returns set of strings of locally used variables, call recursively on children
 
 import type { BrilFunction, BrilInstruction, Type } from "./types.d.ts";
 
 export function getLocals(func: BrilFunction) {
-  let localvars = new Map<string, Type>();
-  let params = new Map<string, Type>();
+  const localvars = new Map<string, Type>();
+  const params = new Set<string>();
   if (func.args != null) {
-    for (var arg of func.args) {
-      params.set(arg.name, arg.type)
+    for (const arg of func.args) {
+      params.add(arg.name)
     }
   }
   return getLocalCall(func.instrs, localvars, params)
 }
 
 
-function getLocalCall(brilInstructions: BrilInstruction[], localvars: Map<string, Type>, params: Map<string, Type>): Map<string, Type> {
+function getLocalCall(brilInstructions: BrilInstruction[], localvars: Map<string, Type>, params: Set<string>): Map<string, Type> {
 
   for (let i = 0; i < brilInstructions.length; i++) {
     const instr = brilInstructions[i];
@@ -22,7 +22,7 @@ function getLocalCall(brilInstructions: BrilInstruction[], localvars: Map<string
     if ("dest" in instr) {
       const desty = instr.dest;
       const typy = instr.type;
-      if (params.get(desty) != typy) {
+      if (!params.has(desty)) {
         localvars.set(desty, typy);
       }
     }
