@@ -10,9 +10,19 @@ export async function getAllFilesInFolder(folder: string) {
   return files;
 }
 
-export async function parseArgs(fileName: string) {
+function convertBoolStrings(x: string) {
+  if (x === "true") {
+    return "1";
+  } else if (x === "false") {
+    return "0";
+  }
+  return x;
+}
+
+export async function parseArgs(fileName: string, convertBool: boolean) {
   const baseName = fileName.split(".")[0];
   const fileText = await Deno.readTextFile("./benches/" + baseName + ".bril");
   const argsParse = /^# ?ARGS: (.+)$/gm.exec(fileText);
-  return (argsParse ? (argsParse[1].trim()).split(" ") : []);
+  const x = (argsParse ? (argsParse[1].trim()).split(" ") : []);
+  return convertBool ? x.map(convertBoolStrings) : x;
 }

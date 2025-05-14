@@ -2,14 +2,14 @@ import { getAllFilesInFolder, parseArgs } from "./run_all_utils.ts";
 import { pipeStringIntoCmdAndGetOutput } from "./src/io.ts";
 
 async function processFileWasm(fileName: string) {
-  const programArgs = ["benches_briloop_wat/" + fileName].concat(await parseArgs(fileName));
+  const programArgs = ["benches_briloop_wat/" + fileName].concat(await parseArgs(fileName, true));
   const r = await pipeStringIntoCmdAndGetOutput("wasmtime", "", programArgs);
   return r.stdout;
 }
 
 async function processFileBril(filePath: string, fileName: string) {
   const fileText = await Deno.readTextFile(filePath);
-  const programArgs = ['-p'].concat(await parseArgs(fileName));
+  const programArgs = ['-p'].concat(await parseArgs(fileName, false));
   const r = await pipeStringIntoCmdAndGetOutput("brili", fileText, programArgs);
   return r.stdout;
 }

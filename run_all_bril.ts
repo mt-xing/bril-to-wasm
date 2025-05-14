@@ -3,7 +3,7 @@ import { pipeStringIntoCmdAndGetOutput } from "./src/io.ts";
 
 async function processFile(filePath: string, fileName: string) {
   const fileText = await Deno.readTextFile(filePath);
-  const programArgs = ['-p'].concat(await parseArgs(fileName));
+  const programArgs = ['-p'].concat(await parseArgs(fileName, false));
   const r = await pipeStringIntoCmdAndGetOutput("brili", fileText, programArgs);
   console.log(r.stdout);
 }
