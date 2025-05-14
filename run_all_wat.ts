@@ -1,4 +1,4 @@
-import { getAllFilesInFolder, parseArgs } from "./run_all_bril.ts";
+import { getAllFilesInFolder, parseArgs } from "./run_all_utils.ts";
 import { pipeStringIntoCmdAndGetOutput } from "./src/io.ts";
 
 async function processFile(fileName: string) {
