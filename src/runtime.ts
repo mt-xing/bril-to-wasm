@@ -190,22 +190,22 @@ function wrapWithRuntime(txt: string): string {
 }
 
 function writeFunction(func: BrilFunction): string {
-  let output: string = "(func "
+  let output: string = "(func ";
   if (func.name === "main") {
-    output += "(export \"_start\") "
+    output += "(export \"_start\") ";
   } else {
-    output += `$${func.name} `
+    output += `$${func.name} `;
   }
 
   if (func.args != null) {
     func.args.forEach((arg) => {
       switch (arg.type) {
         case "int":
-          output = output + `(param $${arg.name} i64) `
-          break
+          output = output + `(param $${arg.name} i64) `;
+          break;
         case "bool":
-          output = output + `(param $${arg.name} i32) `
-          break
+          output = output + `(param $${arg.name} i32) `;
+          break;
       }
     })
   }
@@ -213,27 +213,30 @@ function writeFunction(func: BrilFunction): string {
   if (func.type != null) {
     switch (func.type) {
       case "int":
-        output = output + "(result i64) "
-        break
+        output = output + "(result i64) ";
+        break;
       case "bool":
-        output = output + "(result i32) "
-        break
+        output = output + "(result i32) ";
+        break;
     }
 
   }
-  const locals = getLocals(func)
+  const locals = getLocals(func);
   locals.forEach((t, name) => {
     switch (t) {
       case "int":
-        output = output + `(local $${name} i64) `
+        output = output + `(local $${name} i64) `;
         break
       case "bool":
-        output = output + `(local $${name} i32) `
+        output = output + `(local $${name} i32) `;
         break
 
     }
   })
   // instructions
+  func.args?.forEach((arg) => {
+    locals.set(arg.name, arg.type);
+  });
   const translated = convertBlock(func.instrs, locals, []);
 
   output = output + "\n" + translated;
