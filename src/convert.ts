@@ -1,18 +1,35 @@
 import type { BrilInstruction, Type } from "./types.d.ts";
 import { assertUnreachable, freshName } from "./utils.ts";
 
-export function convertBlock(block: BrilInstruction[], context: Map<string, Type>, nestedLoops: string[]): string {
+type BreakInfo = {
+  t: "block",
+  name: string,
+} | {
+  t: "loop",
+  suffix: string,
+}
+
+export function convertBlock(block: BrilInstruction[], context: Map<string, Type>, nestedLoops: BreakInfo[]): string {
   return block.map(i => convertSingleInstruction(i, context, nestedLoops)).reduce((a, x) => a + x);
 }
 
-function getLoopSuffix(index: number, nestedLoops: string[], instr?: string) {
+function getJumpTarget(index: number, nestedLoops: BreakInfo[], isBreak: boolean) {
   if (index >= nestedLoops.length) {
-    throw new Error(`Invalid loop ${instr ?? ''} index ` + index + " for loop array " + JSON.stringify(nestedLoops));
+    throw new Error(`Invalid loop ${isBreak ? "break" : "continue"} index ` + index + " for loop array " + JSON.stringify(nestedLoops));
   }
-  return nestedLoops[nestedLoops.length - 1 - index];
+
+  const target = nestedLoops[nestedLoops.length - 1 - index];
+  switch (target.t) {
+    case "block":
+      return target.name;
+    case "loop":
+      return `${isBreak ? 'b' : 'l'}_${target.suffix}`;
+    default: assertUnreachable(target);
+  }
+
 }
 
-export function convertSingleInstruction(instr: BrilInstruction, context: Map<string, Type>, nestedLoops: string[]): string {
+export function convertSingleInstruction(instr: BrilInstruction, context: Map<string, Type>, nestedLoops: BreakInfo[]): string {
   switch (instr.op) {
     case "nop":
       return "nop\n";
@@ -63,9 +80,12 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
 
     case "block": {
       const blockName = freshName("block");
-      return `(block $${blockName}
+      nestedLoops.push({t: "block", name: blockName});
+      const o = `(block $${blockName}
         ${convertBlock(instr.children[0], context, nestedLoops)}
       )\n`;
+      nestedLoops.pop();
+      return o;
     }
     case "if":
       return `local.get $${instr.args[0]}\n (if
@@ -73,7 +93,7 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
        (else \n ${convertBlock(instr.children[1], context, nestedLoops)} \n) \n)\n`;
     case "while": {
       const suffix = freshName("loop");
-      nestedLoops.push(suffix);
+      nestedLoops.push({t: "loop", suffix});
       const o = `(block $b_${suffix}
         (loop $l_${suffix}
           ${convertBlock(instr.children[0], context, nestedLoops)}
@@ -85,9 +105,9 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
       return o;
     }
     case "continue":
-      return `br $l_${getLoopSuffix(instr.value, nestedLoops, "continue")}\n`;
+      return `br $${getJumpTarget(instr.value, nestedLoops, false)}\n`;
     case "break":
-      return `br $b_${getLoopSuffix(instr.value, nestedLoops, "break")}\n`;
+      return `br $${getJumpTarget(instr.value, nestedLoops, true)}\n`;
 
     default:
       assertUnreachable(instr);
