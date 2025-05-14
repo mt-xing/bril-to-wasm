@@ -200,8 +200,8 @@ i64.const 0
 local.set $zero
 i32.const 1
 local.set $__v0
-(block $b_loop_8024151503978797
-        (loop $l_loop_8024151503978797
+(block $b_loop_5407744323803291
+        (loop $l_loop_5407744323803291
           local.get $p
 local.get $p
 i64.mul
@@ -213,7 +213,7 @@ local.set $cond
 local.get $cond
  (if
        (then 
- (block $block_25236926353197353
+ (block $block_8988427660530154
         local.get $n
 local.get $p
 call $mod
@@ -227,8 +227,8 @@ local.get $if_cond
        (then 
  i32.const 1
 local.set $__v1
-(block $b_loop_6406120276354937
-        (loop $l_loop_6406120276354937
+(block $b_loop_27740528221784233
+        (loop $l_loop_27740528221784233
           local.get $n
 local.get $p
 call $mod
@@ -246,7 +246,7 @@ i64.div_s
 local.set $npdiv
 local.get $npdiv
 local.set $n
-br $l_loop_6406120276354937
+br $l_loop_27740528221784233
  
 ) 
        (else 
@@ -258,19 +258,19 @@ local.get $result
 local.get $resdiv
 i64.sub
 local.set $result
-br $block_25236926353197353
+br $block_8988427660530154
  
 ) 
 )
 
           local.get $__v1
-          br_if $l_loop_6406120276354937
+          br_if $l_loop_27740528221784233
         )
       )
  
 ) 
        (else 
- br $block_25236926353197353
+ br $block_8988427660530154
  
 ) 
 )
@@ -280,11 +280,11 @@ local.get $p
 local.get $one
 i64.add
 local.set $p
-br $l_loop_8024151503978797
+br $l_loop_5407744323803291
  
 ) 
        (else 
- (block $block_508278534505
+ (block $block_8681065436156603
         local.get $n
 local.get $one
 i64.gt_s
@@ -300,11 +300,11 @@ local.get $result
 local.get $resdiv
 i64.sub
 local.set $result
-br $block_508278534505
+br $block_8681065436156603
  
 ) 
        (else 
- br $block_508278534505
+ br $block_8681065436156603
  
 ) 
 )
@@ -317,7 +317,7 @@ local.get $result
 )
 
           local.get $__v0
-          br_if $l_loop_8024151503978797
+          br_if $l_loop_5407744323803291
         )
       )
 i64.const 0

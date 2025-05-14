@@ -178,7 +178,7 @@
   )
   
   (func $hanoi (param $disks i64) (param $src i64) (param $dst i64) (param $spare i64) (local $zero i64) (local $pos i32) (local $one i64) (local $above i64) 
-(block $block_9661542532107176
+(block $block_8647408438898673
         i64.const 0
 local.set $zero
 local.get $disks
@@ -210,11 +210,11 @@ local.get $spare
 local.get $dst
 local.get $src
 call $hanoi
-br $block_9661542532107176
+br $block_8647408438898673
  
 ) 
        (else 
- br $block_9661542532107176
+ br $block_8647408438898673
  
 ) 
 )

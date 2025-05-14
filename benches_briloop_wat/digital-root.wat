@@ -186,8 +186,8 @@ i64.const 0
 local.set $result
 i32.const 1
 local.set $__v0
-(block $b_loop_0952627099591915
-        (loop $l_loop_0952627099591915
+(block $b_loop_4128491984317054
+        (loop $l_loop_4128491984317054
           local.get $input
 call $peel_last_digit
  local.set $digit
@@ -201,8 +201,8 @@ i64.add
 local.set $result
 i32.const 1
 local.set $__v1
-(block $b_loop_3225692091125496
-        (loop $l_loop_3225692091125496
+(block $b_loop_6185057992024133
+        (loop $l_loop_6185057992024133
           local.get $result
 call $int_to_string_and_print
 call $print_newline
@@ -226,7 +226,7 @@ return
  
 ) 
        (else 
- br $l_loop_0952627099591915
+ br $l_loop_4128491984317054
  
 ) 
 )
@@ -244,18 +244,18 @@ local.get $result
 local.get $r0
 i64.add
 local.set $result
-br $l_loop_3225692091125496
+br $l_loop_6185057992024133
  
 ) 
 )
 
           local.get $__v1
-          br_if $l_loop_3225692091125496
+          br_if $l_loop_6185057992024133
         )
       )
 
           local.get $__v0
-          br_if $l_loop_0952627099591915
+          br_if $l_loop_4128491984317054
         )
       )
  )

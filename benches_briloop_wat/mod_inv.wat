@@ -206,8 +206,8 @@ local.get $v7
 local.set $i
 i32.const 1
 local.set $__v0
-(block $b_loop_17244083842034308
-        (loop $l_loop_17244083842034308
+(block $b_loop_9333961450613761
+        (loop $l_loop_9333961450613761
           local.get $m
 local.set $v8
 i64.const 0
@@ -219,7 +219,7 @@ local.set $v10
 local.get $v10
  (if
        (then 
- (block $block_06280258122498505
+ (block $block_025741670110155157
         local.get $m
 local.set $v12
 local.get $m
@@ -243,7 +243,7 @@ local.set $v18
 local.get $v18
  (if
        (then 
- br $block_06280258122498505
+ br $block_025741670110155157
  
 ) 
        (else 
@@ -263,7 +263,7 @@ call $mod
  local.set $v23
 local.get $v23
 local.set $ans
-br $block_06280258122498505
+br $block_025741670110155157
  
 ) 
 )
@@ -295,7 +295,7 @@ i64.div_s
 local.set $v31
 local.get $v31
 local.set $m
-br $l_loop_17244083842034308
+br $l_loop_9333961450613761
  
 ) 
        (else 
@@ -312,7 +312,7 @@ return
 )
 
           local.get $__v0
-          br_if $l_loop_17244083842034308
+          br_if $l_loop_9333961450613761
         )
       )
  )

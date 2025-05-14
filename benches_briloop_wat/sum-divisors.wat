@@ -178,7 +178,7 @@
   )
   
   (func (export "_start") (param $n i64) (local $i i64) (local $res i64) (local $one i64) (local $non i64) (local $zer i64) (local $nlz i32) (local $__v2 i32) (local $isq i64) (local $sqgt i32) (local $m i64) (local $eqz i32) (local $d i64) (local $deqi i32) 
-(block $block_1812186485923074
+(block $block_18707132011296934
         i64.const 0
 local.set $i
 i64.const 0
@@ -200,11 +200,11 @@ local.get $nlz
 local.get $non
 i64.mul
 local.set $n
-br $block_1812186485923074
+br $block_18707132011296934
  
 ) 
        (else 
- br $block_1812186485923074
+ br $block_18707132011296934
  
 ) 
 )
@@ -212,8 +212,8 @@ br $block_1812186485923074
       )
 i32.const 1
 local.set $__v2
-(block $b_loop_5225045972478414
-        (loop $l_loop_5225045972478414
+(block $b_loop_669134756566085
+        (loop $l_loop_669134756566085
           local.get $i
 local.get $one
 i64.add
@@ -265,7 +265,7 @@ local.set $deqi
 local.get $deqi
  (if
        (then 
- br $l_loop_5225045972478414
+ br $l_loop_669134756566085
  
 ) 
        (else 
@@ -276,14 +276,14 @@ local.get $res
 local.get $d
 i64.add
 local.set $res
-br $l_loop_5225045972478414
+br $l_loop_669134756566085
  
 ) 
 )
  
 ) 
        (else 
- br $l_loop_5225045972478414
+ br $l_loop_669134756566085
  
 ) 
 )
@@ -292,7 +292,7 @@ br $l_loop_5225045972478414
 )
 
           local.get $__v2
-          br_if $l_loop_5225045972478414
+          br_if $l_loop_669134756566085
         )
       )
  )

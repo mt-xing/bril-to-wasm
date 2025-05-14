@@ -213,8 +213,8 @@ i64.sub
 local.set $n
 i32.const 1
 local.set $__v0
-(block $b_loop_5658910827690211
-        (loop $l_loop_5658910827690211
+(block $b_loop_5311114714638816
+        (loop $l_loop_5311114714638816
           local.get $idx
 local.get $n
 i64.le_s
@@ -244,7 +244,7 @@ local.get $idx
 local.get $one
 i64.add
 local.set $idx
-br $l_loop_5658910827690211
+br $l_loop_5311114714638816
  
 ) 
        (else 
@@ -255,7 +255,7 @@ br $l_loop_5658910827690211
 )
 
           local.get $__v0
-          br_if $l_loop_5658910827690211
+          br_if $l_loop_5311114714638816
         )
       )
  

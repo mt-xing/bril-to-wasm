@@ -190,8 +190,8 @@ local.get $v3
 local.set $i
 i32.const 1
 local.set $__v0
-(block $b_loop_497262603695676
-        (loop $l_loop_497262603695676
+(block $b_loop_02815824296653846
+        (loop $l_loop_02815824296653846
           local.get $i
 local.set $v4
 i64.const 0
@@ -223,7 +223,7 @@ i64.sub
 local.set $v12
 local.get $v12
 local.set $i
-br $l_loop_497262603695676
+br $l_loop_02815824296653846
  
 ) 
        (else 
@@ -240,7 +240,7 @@ return
 )
 
           local.get $__v0
-          br_if $l_loop_497262603695676
+          br_if $l_loop_02815824296653846
         )
       )
  )

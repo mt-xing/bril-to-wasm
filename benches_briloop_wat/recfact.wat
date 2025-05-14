@@ -197,7 +197,7 @@ local.set $v3
 return
  )
 (func $fac (param $x i64) (result i64) (local $v1 i64) (local $v2 i64) (local $v3 i32) (local $v4 i64) (local $v5 i64) (local $v6 i64) (local $v7 i64) (local $v8 i64) (local $v9 i64) (local $v10 i64) (local $result i64) (local $v11 i64) 
-(block $block_4138654705616446
+(block $block_8059797125953112
         local.get $x
 local.set $v1
 i64.const 1
@@ -213,11 +213,11 @@ local.get $v3
 local.set $v4
 local.get $v4 
  return
-br $block_4138654705616446
+br $block_8059797125953112
  
 ) 
        (else 
- br $block_4138654705616446
+ br $block_8059797125953112
  
 ) 
 )

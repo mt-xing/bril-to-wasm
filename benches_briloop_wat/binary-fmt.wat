@@ -183,7 +183,7 @@ call $printBinary
 return
  )
 (func $printBinary (param $n i64) (local $zero i64) (local $cond i32) (local $two i64) (local $v0 i64) (local $v1 i64) 
-(block $block_4209359714958939
+(block $block_2585492821072133
         i64.const 0
 local.set $zero
 local.get $n
@@ -193,7 +193,7 @@ local.set $cond
 local.get $cond
  (if
        (then 
- br $block_4209359714958939
+ br $block_2585492821072133
  
 ) 
        (else 
@@ -212,7 +212,7 @@ call $printBinary
 local.get $v0
 call $int_to_string_and_print
 call $print_newline
-br $block_4209359714958939
+br $block_2585492821072133
  
 ) 
 )

@@ -186,8 +186,8 @@ i64.const 0
 local.set $zero
 i32.const 1
 local.set $__v0
-(block $b_loop_3773573982501126
-        (loop $l_loop_3773573982501126
+(block $b_loop_6186445982386961
+        (loop $l_loop_6186445982386961
           local.get $input
 local.get $zero
 i64.eq
@@ -214,13 +214,13 @@ local.get $sum
 local.get $bit
 i64.add
 local.set $sum
-br $l_loop_3773573982501126
+br $l_loop_6186445982386961
  
 ) 
 )
 
           local.get $__v0
-          br_if $l_loop_3773573982501126
+          br_if $l_loop_6186445982386961
         )
       )
  )

@@ -35,6 +35,12 @@ export async function pipeStringIntoCmdAndGetOutput(
     const outputText = await streamToString(child.stdout);
     const errText = await streamToString(child.stderr);
 
+    try {
+        child.kill();
+    } catch (_) {
+        // ignore
+    }
+
     return { stdout: outputText, stderr: errText };
 
 }

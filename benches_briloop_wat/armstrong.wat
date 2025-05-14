@@ -191,8 +191,8 @@ local.get $input
 local.set $tmp
 i32.const 1
 local.set $__v0
-(block $b_loop_3933091522145983
-        (loop $l_loop_3933091522145983
+(block $b_loop_1242055259813798
+        (loop $l_loop_1242055259813798
           local.get $tmp
 local.get $zero
 i64.gt_s
@@ -216,7 +216,7 @@ local.get $tmp
 local.get $ten
 i64.div_s
 local.set $tmp
-br $l_loop_3933091522145983
+br $l_loop_1242055259813798
  
 ) 
        (else 
@@ -233,7 +233,7 @@ return
 )
 
           local.get $__v0
-          br_if $l_loop_3933091522145983
+          br_if $l_loop_1242055259813798
         )
       )
  )
@@ -304,8 +304,8 @@ i64.const 1
 local.set $res
 i32.const 1
 local.set $__v2
-(block $b_loop_48402310118630465
-        (loop $l_loop_48402310118630465
+(block $b_loop_2485959716416214
+        (loop $l_loop_2485959716416214
           local.get $exp
 local.get $zero
 i64.eq
@@ -326,13 +326,13 @@ local.get $exp
 local.get $one
 i64.sub
 local.set $exp
-br $l_loop_48402310118630465
+br $l_loop_2485959716416214
  
 ) 
 )
 
           local.get $__v2
-          br_if $l_loop_48402310118630465
+          br_if $l_loop_2485959716416214
         )
       )
 i64.const 0

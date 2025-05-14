@@ -178,7 +178,7 @@
   )
   
   (func (export "_start") (param $x i64) (param $y i64) (local $greater i64) (local $v4 i32) (local $__v2 i32) (local $modX i64) (local $modY i64) (local $zero i64) (local $xZero i32) (local $yZero i32) (local $bothZero i32) (local $one i64) 
-(block $block_17919231165447091
+(block $block_202592021130222
         local.get $y
 local.set $greater
 local.get $x
@@ -190,11 +190,11 @@ local.get $v4
        (then 
  local.get $x
 local.set $greater
-br $block_17919231165447091
+br $block_202592021130222
  
 ) 
        (else 
- br $block_17919231165447091
+ br $block_202592021130222
  
 ) 
 )
@@ -202,8 +202,8 @@ br $block_17919231165447091
       )
 i32.const 1
 local.set $__v2
-(block $b_loop_9883425093075815
-        (loop $l_loop_9883425093075815
+(block $b_loop_13122821141181873
+        (loop $l_loop_13122821141181873
           local.get $greater
 local.get $x
 call $getMod
@@ -242,13 +242,13 @@ local.get $greater
 local.get $one
 i64.add
 local.set $greater
-br $l_loop_9883425093075815
+br $l_loop_13122821141181873
  
 ) 
 )
 
           local.get $__v2
-          br_if $l_loop_9883425093075815
+          br_if $l_loop_13122821141181873
         )
       )
  )

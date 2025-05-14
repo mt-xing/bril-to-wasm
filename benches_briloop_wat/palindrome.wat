@@ -190,8 +190,8 @@ i32.const 1
 local.set $not_finished
 i32.const 1
 local.set $__v0
-(block $b_loop_8112740374447894
-        (loop $l_loop_8112740374447894
+(block $b_loop_1829335734903922
+        (loop $l_loop_1829335734903922
           local.get $not_finished
  (if
        (then 
@@ -212,7 +212,7 @@ local.get $check
        (then 
  i32.const 0
 local.set $not_finished
-br $l_loop_8112740374447894
+br $l_loop_1829335734903922
  
 ) 
        (else 
@@ -220,7 +220,7 @@ br $l_loop_8112740374447894
 local.get $one
 i64.add
 local.set $index
-br $l_loop_8112740374447894
+br $l_loop_1829335734903922
  
 ) 
 )
@@ -244,7 +244,7 @@ return
 )
 
           local.get $__v0
-          br_if $l_loop_8112740374447894
+          br_if $l_loop_1829335734903922
         )
       )
  )
@@ -259,8 +259,8 @@ i32.const 1
 local.set $not_finished
 i32.const 1
 local.set $__v3
-(block $b_loop_4626651228459714
-        (loop $l_loop_4626651228459714
+(block $b_loop_5289831195378126
+        (loop $l_loop_5289831195378126
           local.get $not_finished
  (if
        (then 
@@ -273,7 +273,7 @@ local.get $finished
        (then 
  i32.const 0
 local.set $not_finished
-br $l_loop_4626651228459714
+br $l_loop_5289831195378126
  
 ) 
        (else 
@@ -285,7 +285,7 @@ local.get $exp
 local.get $one
 i64.sub
 local.set $exp
-br $l_loop_4626651228459714
+br $l_loop_5289831195378126
  
 ) 
 )
@@ -299,14 +299,14 @@ br $l_loop_4626651228459714
 )
 
           local.get $__v3
-          br_if $l_loop_4626651228459714
+          br_if $l_loop_5289831195378126
         )
       )
 i64.const 0
 return
  )
 (func $palindrome (param $in i64) (param $len i64) (result i32) (local $is_palindrome i32) (local $zero i64) (local $two i64) (local $ten i64) (local $check i32) (local $power i64) (local $left i64) (local $v1 i64) (local $v2 i64) (local $right i64) (local $is_equal i32) (local $temp i64) (local $next_in i64) (local $next_len i64) 
-(block $block_8549563153658913
+(block $block_08305248477965388
         i32.const 0
 local.set $is_palindrome
 i64.const 0
@@ -324,7 +324,7 @@ local.get $check
        (then 
  i32.const 1
 local.set $is_palindrome
-br $block_8549563153658913
+br $block_08305248477965388
  
 ) 
        (else 
@@ -379,13 +379,13 @@ local.get $next_in
 local.get $next_len
 call $palindrome
  local.set $is_palindrome
-br $block_8549563153658913
+br $block_08305248477965388
  
 ) 
        (else 
  i32.const 0
 local.set $is_palindrome
-br $block_8549563153658913
+br $block_08305248477965388
  
 ) 
 )

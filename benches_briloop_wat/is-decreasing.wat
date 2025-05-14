@@ -203,8 +203,8 @@ local.get $tmp3
 local.set $prev
 i32.const 1
 local.set $__v0
-(block $b_loop_14986818607540675
-        (loop $l_loop_14986818607540675
+(block $b_loop_7173930242869091
+        (loop $l_loop_7173930242869091
           i64.const 0
 local.set $tmp7
 local.get $tmp
@@ -214,7 +214,7 @@ local.set $tmp8
 local.get $tmp8
  (if
        (then 
- (block $block_4914117915955952
+ (block $block_36282848656951683
         local.get $tmp
 call $last_digit
  local.set $tmp9
@@ -231,11 +231,11 @@ local.get $tmp10
 local.set $tmp14
 local.get $tmp14 
  return
-br $block_4914117915955952
+br $block_36282848656951683
  
 ) 
        (else 
- br $block_4914117915955952
+ br $block_36282848656951683
  
 ) 
 )
@@ -251,7 +251,7 @@ i64.div_s
 local.set $tmp16
 local.get $tmp16
 local.set $tmp
-br $l_loop_14986818607540675
+br $l_loop_7173930242869091
  
 ) 
        (else 
@@ -264,7 +264,7 @@ local.get $tmp17
 )
 
           local.get $__v0
-          br_if $l_loop_14986818607540675
+          br_if $l_loop_7173930242869091
         )
       )
 i32.const 0

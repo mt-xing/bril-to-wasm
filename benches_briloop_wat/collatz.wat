@@ -186,8 +186,8 @@ i64.const 3
 local.set $three
 i32.const 1
 local.set $__v0
-(block $b_loop_22103233153003765
-        (loop $l_loop_22103233153003765
+(block $b_loop_4662819718961819
+        (loop $l_loop_4662819718961819
           local.get $x
 call $int_to_string_and_print
 call $print_newline
@@ -221,7 +221,7 @@ local.get $even
 local.get $two
 i64.div_s
 local.set $x
-br $l_loop_22103233153003765
+br $l_loop_4662819718961819
  
 ) 
        (else 
@@ -233,7 +233,7 @@ local.get $x
 local.get $one
 i64.add
 local.set $x
-br $l_loop_22103233153003765
+br $l_loop_4662819718961819
  
 ) 
 )
@@ -242,7 +242,7 @@ br $l_loop_22103233153003765
 )
 
           local.get $__v0
-          br_if $l_loop_22103233153003765
+          br_if $l_loop_4662819718961819
         )
       )
  )

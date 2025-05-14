@@ -186,8 +186,8 @@ i64.const 2
 local.set $fac
 i32.const 1
 local.set $__v0
-(block $b_loop_8169525753742384
-        (loop $l_loop_8169525753742384
+(block $b_loop_8161431235671495
+        (loop $l_loop_8161431235671495
           local.get $one
 local.get $num
 i64.lt_s
@@ -221,7 +221,7 @@ local.get $num
 local.get $fac
 i64.div_s
 local.set $num
-br $l_loop_8169525753742384
+br $l_loop_8161431235671495
  
 ) 
        (else 
@@ -229,7 +229,7 @@ br $l_loop_8169525753742384
 local.get $one
 i64.add
 local.set $fac
-br $l_loop_8169525753742384
+br $l_loop_8161431235671495
  
 ) 
 )
@@ -242,7 +242,7 @@ br $l_loop_8169525753742384
 )
 
           local.get $__v0
-          br_if $l_loop_8169525753742384
+          br_if $l_loop_8161431235671495
         )
       )
  )

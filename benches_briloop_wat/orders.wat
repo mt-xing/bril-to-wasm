@@ -178,7 +178,7 @@
   )
   
   (func $abs (param $a i64) (result i64) (local $zero i64) (local $is_neg i32) (local $neg_one i64) 
-(block $block_7648447975235865
+(block $block_4700554393439049
         i64.const 0
 local.set $zero
 local.get $a
@@ -194,11 +194,11 @@ local.get $a
 local.get $neg_one
 i64.mul
 local.set $a
-br $block_7648447975235865
+br $block_4700554393439049
  
 ) 
        (else 
- br $block_7648447975235865
+ br $block_4700554393439049
  
 ) 
 )
@@ -230,8 +230,8 @@ return
 (func $gcd (param $a i64) (param $b i64) (result i64) (local $__v2 i32) (local $mod i64) (local $zero i64) (local $is_term i32) 
 i32.const 1
 local.set $__v2
-(block $b_loop_19803571436638523
-        (loop $l_loop_19803571436638523
+(block $b_loop_4479726891159036
+        (loop $l_loop_4479726891159036
           local.get $a
 local.get $b
 call $mod
@@ -254,20 +254,20 @@ local.get $is_term
 local.set $a
 local.get $mod
 local.set $b
-br $l_loop_19803571436638523
+br $l_loop_4479726891159036
  
 ) 
 )
 
           local.get $__v2
-          br_if $l_loop_19803571436638523
+          br_if $l_loop_4479726891159036
         )
       )
 i64.const 0
 return
  )
 (func $lcm (param $a i64) (param $b i64) (result i64) (local $zero i64) (local $a_is_zero i32) (local $b_is_zero i32) (local $ab i64) (local $gcdab i64) (local $lcm i64) 
-(block $block_4488362686683879
+(block $block_6772689407710083
         i64.const 0
 local.set $zero
 local.get $a
@@ -289,14 +289,14 @@ local.get $b_is_zero
  
 ) 
        (else 
- br $block_4488362686683879
+ br $block_6772689407710083
  
 ) 
 )
  
 ) 
        (else 
- br $block_4488362686683879
+ br $block_6772689407710083
  
 ) 
 )
@@ -325,8 +325,8 @@ return
 (func $orders (param $u i64) (param $n i64) (param $use_lcm i32) (local $__v6 i32) (local $is_term i32) (local $lcm i64) (local $ordu i64) (local $gcdun i64) (local $one i64) 
 i32.const 1
 local.set $__v6
-(block $b_loop_40732242542970154
-        (loop $l_loop_40732242542970154
+(block $b_loop_7781952735832087
+        (loop $l_loop_7781952735832087
           local.get $u
 local.get $n
 i64.eq
@@ -338,7 +338,7 @@ local.get $is_term
  
 ) 
        (else 
- (block $block_4935442679420762
+ (block $block_6781853175690025
         local.get $use_lcm
  (if
        (then 
@@ -350,7 +350,7 @@ local.get $lcm
 local.get $u
 i64.div_s
 local.set $ordu
-br $block_4935442679420762
+br $block_6781853175690025
  
 ) 
        (else 
@@ -362,7 +362,7 @@ local.get $n
 local.get $gcdun
 i64.div_s
 local.set $ordu
-br $block_4935442679420762
+br $block_6781853175690025
  
 ) 
 )
@@ -380,13 +380,13 @@ local.get $u
 local.get $one
 i64.add
 local.set $u
-br $l_loop_40732242542970154
+br $l_loop_7781952735832087
  
 ) 
 )
 
           local.get $__v6
-          br_if $l_loop_40732242542970154
+          br_if $l_loop_7781952735832087
         )
       )
  )

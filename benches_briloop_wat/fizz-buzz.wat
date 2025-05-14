@@ -184,8 +184,8 @@ local.get $v1
 local.set $index
 i32.const 1
 local.set $__v0
-(block $b_loop_10922842417637224
-        (loop $l_loop_10922842417637224
+(block $b_loop_505254771498202
+        (loop $l_loop_505254771498202
           local.get $index
 local.set $v2
 local.get $v2
@@ -195,7 +195,7 @@ local.set $v4
 local.get $v4
  (if
        (then 
- (block $block_190132854668856
+ (block $block_43314907749803255
         local.get $index
 local.set $v5
 i64.const 3
@@ -253,7 +253,7 @@ local.set $v22
 local.get $v22
  (if
        (then 
- (block $block_4369860014497394
+ (block $block_0017945691058104396
         local.get $isBuzz
 local.set $v24
 local.get $v24
@@ -272,7 +272,7 @@ call $int_to_string_and_print
 call $print_newline
 i64.const 0
 local.set $v28
-br $block_4369860014497394
+br $block_0017945691058104396
  
 ) 
        (else 
@@ -289,17 +289,17 @@ call $int_to_string_and_print
 call $print_newline
 i64.const 0
 local.set $v32
-br $block_4369860014497394
+br $block_0017945691058104396
  
 ) 
 )
 
       )
-br $block_190132854668856
+br $block_43314907749803255
  
 ) 
        (else 
- (block $block_9233581661606515
+ (block $block_3415848286339075
         local.get $isBuzz
 local.set $v34
 local.get $v34
@@ -318,7 +318,7 @@ call $int_to_string_and_print
 call $print_newline
 i64.const 0
 local.set $v38
-br $block_9233581661606515
+br $block_3415848286339075
  
 ) 
        (else 
@@ -329,13 +329,13 @@ call $int_to_string_and_print
 call $print_newline
 i64.const 0
 local.set $v40
-br $block_9233581661606515
+br $block_3415848286339075
  
 ) 
 )
 
       )
-br $block_190132854668856
+br $block_43314907749803255
  
 ) 
 )
@@ -351,7 +351,7 @@ i64.add
 local.set $v43
 local.get $v43
 local.set $index
-br $l_loop_10922842417637224
+br $l_loop_505254771498202
  
 ) 
        (else 
@@ -361,7 +361,7 @@ br $l_loop_10922842417637224
 )
 
           local.get $__v0
-          br_if $l_loop_10922842417637224
+          br_if $l_loop_505254771498202
         )
       )
  )

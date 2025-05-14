@@ -218,8 +218,8 @@ i64.const 1
 local.set $to_add
 i32.const 1
 local.set $__v0
-(block $b_loop_37051378076275965
-        (loop $l_loop_37051378076275965
+(block $b_loop_46351101652295634
+        (loop $l_loop_46351101652295634
           local.get $i
 local.get $n
 i64.le_s
@@ -227,7 +227,7 @@ local.set $cond
 local.get $cond
  (if
        (then 
- (block $block_5359767242468516
+ (block $block_2462294696211751
         local.get $a
 call $mod2
  local.set $mod2a
@@ -245,17 +245,17 @@ local.get $c
 local.get $mod2b
 i32.or
 local.set $cond_add
-br $block_5359767242468516
+br $block_2462294696211751
  
 ) 
        (else 
- br $block_5359767242468516
+ br $block_2462294696211751
  
 ) 
 )
 
       )
-(block $block_5629964209162753
+(block $block_6490067166835555
         local.get $cond_add
  (if
        (then 
@@ -263,11 +263,11 @@ br $block_5359767242468516
 local.get $to_add
 i64.add
 local.set $ans
-br $block_5629964209162753
+br $block_6490067166835555
  
 ) 
        (else 
- br $block_5629964209162753
+ br $block_6490067166835555
  
 ) 
 )
@@ -289,7 +289,7 @@ local.get $i
 local.get $one
 i64.add
 local.set $i
-br $l_loop_37051378076275965
+br $l_loop_46351101652295634
  
 ) 
        (else 
@@ -300,7 +300,7 @@ br $l_loop_37051378076275965
 )
 
           local.get $__v0
-          br_if $l_loop_37051378076275965
+          br_if $l_loop_46351101652295634
         )
       )
 i64.const 0
@@ -351,7 +351,7 @@ i64.const 0
 return
  )
 (func (export "_start") (param $a i64) (param $b i64) (param $c i64) (local $one i64) (local $zero i64) (local $sel i64) (local $ans i64) (local $less i32) (local $equal i32) (local $greater i32) 
-(block $block_02993442059330209
+(block $block_9578248765790766
         i64.const 1
 local.set $one
 i64.const 0
@@ -381,7 +381,7 @@ local.get $less
 local.get $b
 call $AND
  local.set $ans
-br $block_02993442059330209
+br $block_9578248765790766
  
 ) 
        (else 
@@ -392,7 +392,7 @@ br $block_02993442059330209
 local.get $b
 call $OR
  local.set $ans
-br $block_02993442059330209
+br $block_9578248765790766
  
 ) 
        (else 
@@ -400,7 +400,7 @@ br $block_02993442059330209
 local.get $b
 call $XOR
  local.set $ans
-br $block_02993442059330209
+br $block_9578248765790766
  
 ) 
 )

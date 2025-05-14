@@ -178,7 +178,7 @@
   )
   
   (func (export "_start") (param $x1 i64) (param $y1 i64) (param $x2 i64) (param $y2 i64) (local $a1 i64) (local $a2 i64) (local $res i64) (local $a1_bigger i32) (local $neg1 i64) 
-(block $block_9361276383669672
+(block $block_07098806758692855
         local.get $x1
 local.get $y1
 call $area
@@ -198,7 +198,7 @@ local.set $a1_bigger
 local.get $a1_bigger
  (if
        (then 
- br $block_9361276383669672
+ br $block_07098806758692855
  
 ) 
        (else 
@@ -208,7 +208,7 @@ local.get $res
 local.get $neg1
 i64.mul
 local.set $res
-br $block_9361276383669672
+br $block_07098806758692855
  
 ) 
 )

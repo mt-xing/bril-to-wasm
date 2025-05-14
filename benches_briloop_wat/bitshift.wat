@@ -196,7 +196,7 @@ local.get $v4
  
 ) 
        (else 
- (block $block_1862185383052255
+ (block $block_7728741868803262
         local.get $x
 local.set $v5
 local.get $n
@@ -250,7 +250,7 @@ i64.mul
 local.set $v20
 local.get $v20
 local.set $ans
-br $block_1862185383052255
+br $block_7728741868803262
  
 ) 
        (else 
@@ -258,7 +258,7 @@ br $block_1862185383052255
 local.set $v21
 local.get $v21
 local.set $ans
-br $block_1862185383052255
+br $block_7728741868803262
  
 ) 
 )

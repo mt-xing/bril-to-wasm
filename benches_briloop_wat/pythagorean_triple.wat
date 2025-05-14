@@ -188,15 +188,15 @@ local.get $one
 local.set $a
 i32.const 1
 local.set $__v0
-(block $b_loop_5516421656554152
-        (loop $l_loop_5516421656554152
+(block $b_loop_525421063912995
+        (loop $l_loop_525421063912995
           local.get $one
 local.set $b
 i32.const 1
 local.set $__v1
-(block $b_loop_9012262004250434
-        (loop $l_loop_9012262004250434
-          (block $block_06623333481950355
+(block $b_loop_29618952857629477
+        (loop $l_loop_29618952857629477
+          (block $block_41886063218584657
         local.get $a
 local.get $a
 i64.mul
@@ -222,11 +222,11 @@ call $print_newline
 local.get $a
 call $int_to_string_and_print
 call $print_newline
-br $block_06623333481950355
+br $block_41886063218584657
  
 ) 
        (else 
- br $block_06623333481950355
+ br $block_41886063218584657
  
 ) 
 )
@@ -258,25 +258,25 @@ local.get $done
  
 ) 
        (else 
- br $l_loop_5516421656554152
+ br $l_loop_525421063912995
  
 ) 
 )
  
 ) 
        (else 
- br $l_loop_9012262004250434
+ br $l_loop_29618952857629477
  
 ) 
 )
 
           local.get $__v1
-          br_if $l_loop_9012262004250434
+          br_if $l_loop_29618952857629477
         )
       )
 
           local.get $__v0
-          br_if $l_loop_5516421656554152
+          br_if $l_loop_525421063912995
         )
       )
  )

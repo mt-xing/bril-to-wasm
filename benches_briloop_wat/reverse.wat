@@ -192,8 +192,8 @@ local.get $v2
 local.set $notdone
 i32.const 1
 local.set $__v0
-(block $b_loop_3392768253856441
-        (loop $l_loop_3392768253856441
+(block $b_loop_6793356571775986
+        (loop $l_loop_6793356571775986
           local.get $notdone
 local.set $v4
 local.get $v4
@@ -232,11 +232,11 @@ local.get $comp1
        (then 
  i32.const 0
 local.set $notdone
-br $l_loop_3392768253856441
+br $l_loop_6793356571775986
  
 ) 
        (else 
- br $l_loop_3392768253856441
+ br $l_loop_6793356571775986
  
 ) 
 )
@@ -252,7 +252,7 @@ return
 )
 
           local.get $__v0
-          br_if $l_loop_3392768253856441
+          br_if $l_loop_6793356571775986
         )
       )
  )

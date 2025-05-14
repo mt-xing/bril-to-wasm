@@ -197,8 +197,8 @@ i64.const 1
 local.set $i
 i32.const 1
 local.set $__v0
-(block $b_loop_7064700048541313
-        (loop $l_loop_7064700048541313
+(block $b_loop_18165882445870996
+        (loop $l_loop_18165882445870996
           local.get $i
 local.get $repeats
 i64.lt_s
@@ -206,7 +206,7 @@ local.set $keepgoing
 local.get $keepgoing
  (if
        (then 
- (block $block_9464447570366264
+ (block $block_9369121934620552
         local.get $arrows
 local.get $one
 i64.le_s
@@ -218,7 +218,7 @@ local.get $base_case
 local.get $num
 i64.mul
 local.set $ans
-br $block_9464447570366264
+br $block_9369121934620552
  
 ) 
        (else 
@@ -231,7 +231,7 @@ local.get $new_arrows
 local.get $ans
 call $up_arrow
  local.set $ans
-br $block_9464447570366264
+br $block_9369121934620552
  
 ) 
 )
@@ -241,7 +241,7 @@ local.get $i
 local.get $one
 i64.add
 local.set $i
-br $l_loop_7064700048541313
+br $l_loop_18165882445870996
  
 ) 
        (else 
@@ -252,7 +252,7 @@ br $l_loop_7064700048541313
 )
 
           local.get $__v0
-          br_if $l_loop_7064700048541313
+          br_if $l_loop_18165882445870996
         )
       )
 i64.const 0

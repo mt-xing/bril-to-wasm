@@ -213,7 +213,7 @@ i64.const 0
 return
  )
 (func $gcd (param $a i64) (param $b i64) (result i64) (local $v1 i64) (local $v2 i64) (local $v3 i32) (local $v4 i64) (local $tmp i64) (local $v5 i64) (local $v6 i64) (local $v8 i64) (local $v9 i64) (local $v10 i32) (local $v11 i64) (local $v13 i64) (local $v14 i64) (local $v15 i32) (local $v16 i64) (local $v17 i64) (local $v18 i64) (local $remainder i64) (local $v19 i64) (local $v20 i64) (local $g i64) (local $v21 i64) 
-(block $block_817488842465283
+(block $block_6652513186610416
         local.get $b
 local.set $v1
 local.get $a
@@ -237,17 +237,17 @@ local.get $tmp
 local.set $v6
 local.get $v6
 local.set $b
-br $block_817488842465283
+br $block_6652513186610416
  
 ) 
        (else 
- br $block_817488842465283
+ br $block_6652513186610416
  
 ) 
 )
 
       )
-(block $block_1468855853048986
+(block $block_3288584857993567
         local.get $a
 local.set $v8
 i64.const 0
@@ -263,11 +263,11 @@ local.get $v10
 local.set $v11
 local.get $v11 
  return
-br $block_1468855853048986
+br $block_3288584857993567
  
 ) 
        (else 
- (block $block_8059128795513129
+ (block $block_9128868690740134
         local.get $b
 local.set $v13
 i64.const 0
@@ -283,17 +283,17 @@ local.get $v15
 local.set $v16
 local.get $v16 
  return
-br $block_8059128795513129
+br $block_9128868690740134
  
 ) 
        (else 
- br $block_8059128795513129
+ br $block_9128868690740134
  
 ) 
 )
 
       )
-br $block_1468855853048986
+br $block_3288584857993567
  
 ) 
 )
@@ -333,8 +333,8 @@ local.get $v1
 local.set $b
 i32.const 1
 local.set $__v6
-(block $b_loop_17313608880946496
-        (loop $l_loop_17313608880946496
+(block $b_loop_8488739006233442
+        (loop $l_loop_8488739006233442
           local.get $b
 local.set $v2
 i64.const 1
@@ -346,7 +346,7 @@ local.set $v4
 local.get $v4
  (if
        (then 
- (block $block_6336313785126353
+ (block $block_4682993027951605
         local.get $a
 local.set $v5
 local.get $b
@@ -375,11 +375,11 @@ call $int_to_string_and_print
 call $print_newline
 i64.const 0
 local.set $v12
-br $block_6336313785126353
+br $block_4682993027951605
  
 ) 
        (else 
- br $block_6336313785126353
+ br $block_4682993027951605
  
 ) 
 )
@@ -395,7 +395,7 @@ i64.sub
 local.set $v15
 local.get $v15
 local.set $b
-br $l_loop_17313608880946496
+br $l_loop_8488739006233442
  
 ) 
        (else 
@@ -405,7 +405,7 @@ br $l_loop_17313608880946496
 )
 
           local.get $__v6
-          br_if $l_loop_17313608880946496
+          br_if $l_loop_8488739006233442
         )
       )
  )
