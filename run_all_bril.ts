@@ -21,7 +21,8 @@ export async function parseArgs(fileName: string) {
 async function processFile(filePath: string, fileName: string) {
   const fileText = await Deno.readTextFile(filePath);
   const programArgs = ['-p'].concat(await parseArgs(fileName));
-  await pipeStringIntoCmdAndGetOutput("brili", fileText, programArgs);
+  const r = await pipeStringIntoCmdAndGetOutput("brili", fileText, programArgs);
+  console.log(r.stdout);
 }
 
 const files = await getAllFilesInFolder("./benches_json");
