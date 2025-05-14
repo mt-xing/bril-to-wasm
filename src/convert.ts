@@ -5,9 +5,9 @@ export function convertBlock(block: BrilInstruction[], context: Map<string, Type
   return block.map(i => convertSingleInstruction(i, context, nestedLoops)).reduce((a, x) => a + x);
 }
 
-function getLoopSuffix(index: number, nestedLoops: string[]) {
+function getLoopSuffix(index: number, nestedLoops: string[], instr?: string) {
   if (index >= nestedLoops.length) {
-    throw new Error("Invalid loop index " + index + " for loop array " + JSON.stringify(nestedLoops));
+    throw new Error(`Invalid loop ${instr ?? ''} index ` + index + " for loop array " + JSON.stringify(nestedLoops));
   }
   return nestedLoops[nestedLoops.length - 1 - index];
 }
@@ -85,9 +85,9 @@ export function convertSingleInstruction(instr: BrilInstruction, context: Map<st
       return o;
     }
     case "continue":
-      return `br $l_${getLoopSuffix(instr.value, nestedLoops)}\n`;
+      return `br $l_${getLoopSuffix(instr.value, nestedLoops, "continue")}\n`;
     case "break":
-      return `br $b_${getLoopSuffix(instr.value, nestedLoops)}\n`;
+      return `br $b_${getLoopSuffix(instr.value, nestedLoops, "break")}\n`;
 
     default:
       assertUnreachable(instr);
